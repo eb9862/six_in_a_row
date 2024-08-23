@@ -29,6 +29,8 @@ end = False
 
 turn = 0
 
+t = 0
+
 def place_stone(x, y, color):
     if color == "black":
         stone = stone_black
@@ -51,7 +53,10 @@ while run:
                     board[idx_y][idx_x] = 1
                 else:
                     board[idx_y][idx_x] = 2
-                turn += 1
+                t += 1
+                if t == 2 or turn == 0:
+                    turn += 1
+                    t = 0
             print(mouse_pos)
     
     for y in range(19):
