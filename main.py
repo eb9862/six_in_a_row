@@ -4,13 +4,15 @@ from position import get_idx, get_pos
 from rule import check_vertical, check_horizontal, check_diagonal_upward, check_diagonal_downward
 
 pygame.init()
+pygame.mixer.init()
 
 screen = pygame.display.set_mode((800, 800))
 #clock = pygame.time.Clock()
 pygame.display.set_caption("six in a row")
 
 # sound
-##### ~
+sound_place_stone = pygame.mixer.Sound("six_in_a_row/src/sound/pop-39222.mp3")
+sound_place_stone.set_volume(0.5)
 
 # img load
 background = pygame.image.load("six_in_a_row/src/img/Blank_Go_board.png")
@@ -73,6 +75,8 @@ while run:
                 if t == 2 or turn == 0:
                     turn += 1
                     t = 0
+                # sound after placing stone
+                sound_place_stone.play()
             print(mouse_pos)
     
     for y in range(19):
