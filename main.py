@@ -13,6 +13,8 @@ pygame.display.set_caption("six in a row")
 # sound
 sound_place_stone = pygame.mixer.Sound("six_in_a_row/src/sound/pop-39222.mp3")
 sound_place_stone.set_volume(0.5)
+sound_for_winner = pygame.mixer.Sound("six_in_a_row/src/sound/yeah~.mp3")
+sound_for_winner.set_volume(0.5)
 
 # img load
 background = pygame.image.load("six_in_a_row/src/img/Blank_Go_board.png")
@@ -105,6 +107,8 @@ while run:
         win_text = font.render(f"{current_player} wins!", True, (0, 0, 0))
         text_rect = win_text.get_rect(center=(400, 400))
         screen.blit(win_text, text_rect)
+        
+        sound_for_winner.play()
 
         run = False
     
