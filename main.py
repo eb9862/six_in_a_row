@@ -23,6 +23,9 @@ stone_white = pygame.image.load("six_in_a_row/src/img/Go_w_no_bg.png")
 stone_black = pygame.transform.scale(stone_black, (40, 40))
 stone_white = pygame.transform.scale(stone_white, (40, 40))
 
+# font
+font = pygame.font.Font(None, 36)
+
 board = np.zeros([19, 19])
 
 run = True
@@ -32,6 +35,8 @@ end = False
 turn = 0
 
 t = 0
+
+win = False
 
 def place_stone(x, y, color):
     if color == "black":
@@ -69,7 +74,7 @@ while run:
                         current_player = "black"
                     else:
                         current_player = "white"
-                    print(f"{current_player} win!")
+                    win = True
                 # 2 stones per turn
                 t += 1
                 if t == 2 or turn == 0:
@@ -88,8 +93,29 @@ while run:
                 else:
                     color = "white"
                 place_stone(stone_x, stone_y, color)
+    
+    if win == True:
+        # 반투명 overlay 생성
+        overlay = pygame.Surface((800, 800))
+        overlay.set_alpha(128)
+        overlay.fill((200, 200, 200))
+        screen.blit(overlay, (0, 0))
 
+        # 승리 메시지 생성
+        win_text = font.render(f"{current_player} wins!", True, (0, 0, 0))
+        text_rect = win_text.get_rect(center=(400, 400))
+        screen.blit(win_text, text_rect)
+
+        run = False
+    
     pygame.display.update()
 
+# 승패 결과 출력 후 창을 닫을때까지 대기
+running = True
+
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
 pygame.quit()
-# 규칙에 상관없이 번갈아가면서 돌 놓기 완료
