@@ -1,6 +1,6 @@
 # six_in_a_row
 pygame 라이브러리를 사용한 6목 게임
-<br>
+<br><br>
 <img width="500" src="https://github.com/user-attachments/assets/b6251e04-a73d-46cc-8ace-e6a917daa785">
 
 ## File tree
