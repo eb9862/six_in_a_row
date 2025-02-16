@@ -11,17 +11,17 @@ screen = pygame.display.set_mode((800, 800))
 pygame.display.set_caption("six in a row")
 
 # sound
-sound_place_stone = pygame.mixer.Sound("six_in_a_row/src/sound/pop-39222.mp3")
+sound_place_stone = pygame.mixer.Sound("src/sound/pop-39222.mp3")
 sound_place_stone.set_volume(0.5)
-sound_for_winner = pygame.mixer.Sound("six_in_a_row/src/sound/yeah~.mp3")
+sound_for_winner = pygame.mixer.Sound("src/sound/yeah~.mp3")
 sound_for_winner.set_volume(0.5)
 
 # img load
-background = pygame.image.load("six_in_a_row/src/img/Blank_Go_board.png")
+background = pygame.image.load("src/img/Blank_Go_board.png")
 background = pygame.transform.scale(background, (800, 800))
 
-stone_black = pygame.image.load("six_in_a_row/src/img/Go_b_no_bg.png")
-stone_white = pygame.image.load("six_in_a_row/src/img/Go_w_no_bg.png")
+stone_black = pygame.image.load("src/img/Go_b_no_bg.png")
+stone_white = pygame.image.load("src/img/Go_w_no_bg.png")
 stone_black = pygame.transform.scale(stone_black, (40, 40))
 stone_white = pygame.transform.scale(stone_white, (40, 40))
 
@@ -64,13 +64,13 @@ while run:
                     board[idx_y][idx_x] = 2
                 # rule, 승리 조건 체크
                 v = check_vertical(idx_x, idx_y, board)
-                print(f"vertical = {v}")
+                #print(f"vertical = {v}")
                 h = check_horizontal(idx_x, idx_y, board)
-                print(f"horizontal = {h}")
+                #print(f"horizontal = {h}")
                 uw = check_diagonal_upward(idx_x, idx_y, board)
-                print(f"upward = {uw}")
+                #print(f"upward = {uw}")
                 dw = check_diagonal_downward(idx_x, idx_y, board)
-                print(f"downward = {dw}")
+                #print(f"downward = {dw}")
                 if v >= 6 or h >= 6 or uw >= 6 or dw >= 6:
                     if turn % 2 == 0:
                         current_player = "black"
@@ -84,7 +84,7 @@ while run:
                     t = 0
                 # sound after placing stone
                 sound_place_stone.play()
-            print(mouse_pos)
+            #print(mouse_pos)
     
     for y in range(19):
         for x in range(19):
